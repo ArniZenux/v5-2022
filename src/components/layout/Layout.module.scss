@@ -1,0 +1,53 @@
+.layout {
+  &__header {
+    padding: 0 1rem;
+    background-color: #646459;
+    min-height: 10vh;
+    min-width: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-size: calc(10px + 2vmin);
+  }
+  
+  &__list {
+    display: flex;
+    list-style: none;
+  }
+
+  &__listItem {
+    margin-right: 1rem;
+  }
+
+  /*
+  &__ul {
+    background-color: red;
+    display: flex;
+    list-style: none;
+  }
+
+  &__li {
+    display: flex;
+    margin-right: 4rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  */
+
+  &__main {
+    background-color: none;
+    margin: 0 auto;
+  }
+
+  &__form {
+    margin: 0 auto;
+    padding: 15px;
+    border: 1px black solid;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+  }
+
+}

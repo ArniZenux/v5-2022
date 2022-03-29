@@ -1,0 +1,21 @@
+.Login {
+  &__form {
+    padding: 15px;
+    border: 1px black solid;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__label {
+    background-color: none;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: 'Playfair Display', Georgia, serif;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  
+}

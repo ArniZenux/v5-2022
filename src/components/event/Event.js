@@ -1,13 +1,16 @@
 import React, { useEffect, useState  } from 'react';
-import { Link } from "react-router-dom";
-import { NotFound } from '../../pages/notfound';
+//import { Link } from "react-router-dom";
+//import { NotFound } from '../../pages/notfound';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 
-import { Form } from '../../components/form/form';
+//import { Form } from '../../components/form/form';
 
 import se from './Event.module.scss';
 
-const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = 'https://v3-vefthjousta.herokuapp.com';
+console.log("apiUrl: " + apiUrl); 
+//const apiUrl = process.env.REACT_APP_API_URL;
 
 Event.propTypes = {
   id: PropTypes.string.isRequired,
@@ -20,6 +23,8 @@ export function Event( { title, id , idUrl} ){
   const [error, setError] = useState(null);
   const [notFound, setNotFound] = useState(false);
   const [dataEvent, setData] = useState(null);
+ 
+  console.log(title);
 
   useEffect(() => {
     async function fetchData(){
@@ -54,8 +59,8 @@ export function Event( { title, id , idUrl} ){
       }
       
       setData(json);
+     
     }
-
     fetchData(); 
   }, [id]);
 
@@ -77,11 +82,11 @@ export function Event( { title, id , idUrl} ){
     );
   } 
  
-  if(notFound){
+  /*if(notFound){
     return (
      <NotFound />
     );
-  }
+  }*/
  
   let itemss = []; 
   let notendur = [];
@@ -93,29 +98,51 @@ export function Event( { title, id , idUrl} ){
   
   if( itemss.length === 0 ) {
     return (  
-      <div className='App'>
         <section> 
           <p> Engir viðburðir </p> 
         </section>
-      </div>
     )
   }
          
   return (
-    <div className="App">
-      <section>
-
-        { idUrl && <Link to={'/events'+idUrl}> { title } </Link> } 
-
-        { !idUrl && ( itemss && itemss.length > 0 && itemss.map((item,i ) => {
+    <section>
+      { 
+        idUrl && itemss.length > 0 && itemss.map((item,i ) => {
+           return (
+               
+            <ul>
+                <li key={i}> <Link href={`/event/${item.id}`}><a>{item.namevidburdur}</a></Link> </li>
+            </ul>
+           ) 
+        })
+      }       
+      { 
+        /*idUrl && (itemss && itemss.length > 0 && itemss.map((item,i ) => {
+          return (  
+                <ul className={se.Event__ul}> 
+                  <li className={se.Event__li}> <Link href={apiUrl + '/events'+idUrl} ><a> { item.namevidburdur } </a> </Link>  </li>
+                </ul>
+                )
+            })
+          )
+      
+         idUrl && ( itemss && itemss.length > 0 && itemss.map((item,i ) => {
           return (  
                 <ul className={se.layout__ul}> 
-                  <li className={se.layout__li}>  { item.namevidburdur } </li>
-                  <li className={se.layout__li2}> { item.description }</li>
+                  <li className={se.layout__li} > <Link href={apiUrl + '/events' + idUrl} ><a> { item.namevidburdur }</a></Link> 
+                  </li>
                 </ul>
                 )
              })
-         ) }
+            ) */
+        }
+        { 
+            // !idUrl && ( <Link to="/"> Til baka </Link> ) 
+        }
+    </section>
+  /*
+                   <Link href={apiUrl + '/events' + idUrl} ><a> { item.namevidburdur }</a></Link> 
+                
         { !idUrl && ( <hr className={se.layout__hr}/> ) }
         { !idUrl && ( notendur && notendur.length > 0 && notendur.map((item,i ) => {
           return (  
@@ -131,6 +158,7 @@ export function Event( { title, id , idUrl} ){
         { !idUrl && ( <Link to="/"> Til baka </Link> ) }
 
       </section>
-    </div>
+    </div>*/
+
   );
 }

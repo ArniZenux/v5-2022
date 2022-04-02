@@ -1,4 +1,4 @@
-.Event_layout {
+.Events {
   &__header {
     margin: 0 auto; 
     padding: 0 1rem;
@@ -27,15 +27,15 @@
     font-family: 'Inter';
   }
 
-  &__p{
+  &__p {
     font-family: 'Inter';
     font-size: 1.5rem;
   }
   
   &__item {
+    margin-top: 1rem;
     box-sizing: border-box;
     width: 100%;
     max-width: 33.33333333%;
-    padding: 0 0.5rem 1rem 0.5rem;
   }
 }

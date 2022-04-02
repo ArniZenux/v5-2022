@@ -3,9 +3,13 @@ import { Event } from '../event/Event';
 
 import s1 from './Events.module.scss';
 
-const apiUrl = process.env.REACT_APP_API_URL;
+import { IEventArray, IEventOverview  } from '../../types'
 
-export function Home(){
+const apiUrl = 'https://v3-vefthjousta.herokuapp.com';
+
+console.log("apiUrl: " + apiUrl); 
+
+export function Events() {
   const [loading, setLoading] = useState(false); 
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
@@ -27,7 +31,7 @@ export function Home(){
       }
       catch(e){
         console.warn('unable to fetch data', e); 
-        setError('Gat ekki sótt efni í vefþjónustu - Bilað í þjónustuna.');
+        //setError();
         return; 
       }
       finally{
@@ -36,13 +40,14 @@ export function Home(){
       setData(json); 
     }
 
+    //console.log(data);
+
     fetchData(); 
   }, []);
 
   if (error) {
     return (
-      <div className="App">
-        <h2>Viðburðarlisti</h2>
+      <div className={s1.Events__header}>
           <p> Villa: {error} </p>
       </div>
    );
@@ -50,30 +55,38 @@ export function Home(){
 
   if(loading){
     return (
-     <div className="App">
-       <h2>Viðburðarlisti</h2>
+     <div className={s1.Events__header}>
           <p> sæki gögn .... loading... </p>
      </div>
     )
   } 
 
-  return (
-    <section className={s1.Event_layout__header}>
-      <h2 className={s1.Event_layout__h2} >Viðburðarlisti</h2>
-       { data.length === 0 && ( <p className={s1.Event_layout__h2}> Engir viðburðir </p>) }
-       
-       { data.map( (item, i) => {
+return (
+  <main>
+   <section className={s1.Events__header}>
+      { data.length === 0 && ( <p className={s1.Events_layout__h2}> Engir viðburðir </p>) }
+        
+        { 
+         data.map( (item, i) => {
            return (
             <div key={i} className={s1.Event_layout____item}>
-              <Event 
-                title={ item.namevidburdur }
-                id={item.id} 
-                idUrl={`/${item.id}`}
-              />
-            </div>
-          )
-        })
-       }
-    </section>
+              <p> Hello prófa </p>
+             </div>
+            )
+          })
+        }
+    </section> 
+  </main>
   );
+}
+
+
+export async function getServerSideProps() {
+	const res = await fetch(
+		`https://v3-vefthjousta.herokuapp.com`
+	);
+	const events: IEventArray = await res.json();
+	return {
+		props: { events }, // will be passed to the page component as props
+	};
 }

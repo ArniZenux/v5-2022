@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 //import { Form } from '../../components/form/form';
 
 import se from './Event.module.scss';
+import { IEventArray, IEventOverview  } from '../../types';
 
 const apiUrl = 'https://v3-vefthjousta.herokuapp.com';
 console.log("apiUrl: " + apiUrl); 
@@ -18,13 +19,13 @@ Event.propTypes = {
   limit: PropTypes.number,
 }
 
-export function Event( { title, id , idUrl} ){
+export function Event( props: { events: IEventArray } ){
   const [loading, setLoading] = useState(false); 
   const [error, setError] = useState(null);
   const [notFound, setNotFound] = useState(false);
   const [dataEvent, setData] = useState(null);
  
-  console.log(title);
+  //console.log(title);
 
   useEffect(() => {
     async function fetchData(){
@@ -51,7 +52,7 @@ export function Event( { title, id , idUrl} ){
       }
       catch(e){
         console.warn('unable to fetch data', e); 
-        setError('Gat ekki sótt efni');
+        //setError('Gat ekki sótt efni');
         return; 
       }
       finally{
@@ -90,12 +91,12 @@ export function Event( { title, id , idUrl} ){
  
   let itemss = []; 
   let notendur = [];
-
+/*
   if( dataEvent && dataEvent.items){
       itemss = dataEvent.items;
       notendur = dataEvent.notendur;
   }
-  
+  */
   if( itemss.length === 0 ) {
     return (  
         <section> 
@@ -107,6 +108,7 @@ export function Event( { title, id , idUrl} ){
   return (
     <section>
       { 
+      /*1
         idUrl && itemss.length > 0 && itemss.map((item,i ) => {
            return (
                
@@ -115,6 +117,7 @@ export function Event( { title, id , idUrl} ){
             </ul>
            ) 
         })
+        */
       }       
       { 
         /*idUrl && (itemss && itemss.length > 0 && itemss.map((item,i ) => {

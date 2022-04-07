@@ -7,10 +7,26 @@ export interface IEventOverview {
     updated: string;
 }
 
-export interface IEventArray {
+
+export interface IEventArray{
     items: Array<IEventOverview>;
     limit: number;
     offset: number;
+}
+
+/*export interface IEventArray {
+    items: string; 
+    limit: number;
+    offset: number;
+    eventConnection: {
+      events: Array<IEventOverview>;
+    };
+}*/
+
+export interface IEventResponse{
+    allEvents?: {
+        events?: Array<IEventArray>;
+    };
 }
 
 export interface IComment {

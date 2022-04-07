@@ -1,6 +1,5 @@
 import DefaultErrorPage from 'next/error';
 
-/*
 interface StatusCodeException extends Error {
   statusCode?: string | number;
 }
@@ -22,4 +21,3 @@ export const ErrorPage = ({ message = '', status = 404 }: Props): JSX.Element =>
   e.statusCode = status;
   throw e;
 };
-*/

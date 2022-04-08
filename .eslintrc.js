@@ -1,15 +1,11 @@
 module.exports = {
   root: true,
-  parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
   },
   plugins: [
-    '@typescript-eslint',
   ],
   extends: [
-    'airbnb-typescript',
-    'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
@@ -25,13 +21,5 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off', // e-ð issue með typescript :/
     'react/jsx-one-expression-per-line': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/explicit-function-return-type': [
-      'warn',
-      {
-        allowExpressions: true,
-        allowConciseArrowFunctionExpressionsStartingWithVoid: true,
-      },
-    ],
   },
 };

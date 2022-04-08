@@ -3,8 +3,10 @@ import Link from 'next/link';
 import React, { useEffect, useState  } from 'react';
 
 import { Layout } from '../components/layout/Layout';
+import { Footer } from '../components/footer/footer';
 
 const apiUrl = 'https://v3-vefthjousta.herokuapp.com/';
+//const apiUrl = 'https://vef2-20222-v3-synilausn.herokuapp.com/'  Invaldi token, jesus!
 
 console.log(apiUrl);
 
@@ -46,7 +48,7 @@ export default function Home() {
     fetchData(); 
   }, []);
   
- if (error) {
+  if (error) {
     return (
       <Layout>
       <Head>
@@ -59,12 +61,9 @@ export default function Home() {
         <p> Villa, tókst ekki að sækja gögn</p>
         
       <hr/>
-      <ul>
-        <li><Link href="/">Forsíða</Link></li>
-        <li><Link href="/innskra/innskra">Innskrá</Link></li>
-        <li><Link href="/nyskra/nyskra">Nýskrá</Link></li>
-      </ul>      
+     
       </main>
+      <Footer/>
       </Layout>
    );
   }
@@ -82,12 +81,9 @@ export default function Home() {
         <p> Sæki gögn.... </p>
         
       <hr/>
-      <ul>
-        <li><Link href="/">Forsíða</Link></li>
-        <li><Link href="/innskra/innskra">Innskrá</Link></li>
-        <li><Link href="/nyskra/nyskra">Nýskrá</Link></li>
-      </ul>      
+          
       </main>
+      <Footer/>
       </Layout>
     )
   }
@@ -103,18 +99,16 @@ export default function Home() {
       <ul>
       { 
        data.map( (item, index) => (
-          <li><Link href={`/event/${item.id}`}><a> { item.namevidburdur } </a></Link></li> 
+          <li key={index}><Link href={`/event/${item.id}`}><a> { item.namevidburdur } </a></Link></li> 
        ))
       }
       </ul>
       
     <hr/>
-    <ul>
-      <li><Link href="/">Forsíða</Link></li>
-      <li><Link href="/innskra/innskra">Innskrá</Link></li>
-      <li><Link href="/nyskra/nyskra">Nýskrá</Link></li>
-    </ul>      
+      
     </main>
+    <Footer/>
     </Layout>
+
   );
 }

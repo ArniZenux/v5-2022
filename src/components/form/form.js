@@ -7,10 +7,10 @@ export function Form(){
       <main>
        <form class="field" method="post" action="/admin/login" autocomplete="off">
          <label className={ff.Form_layout__label} for="name">Nafn:</label> 
-         <input type="text" name="name "/>
-         
+         <input className={ff.Form_layout__input} type="text" name="name "/>
+         <br/>
          <label className={ff.Form_layout__label} for="comment">Athugsemdir:</label>
-         <input type="text" id="comment" name="comment" />
+         <input className={ff.Form_layout__input} type="text" id="comment" name="comment" />
         
          <Button />
       </form>

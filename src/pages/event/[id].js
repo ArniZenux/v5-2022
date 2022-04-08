@@ -1,7 +1,8 @@
 import Head from 'next/head'
-import Link from 'next/link';
 import React, { useEffect, useState  } from 'react';
 import { Layout } from '../../components/layout/Layout';
+import { Footer } from '../../components/footer/footer';
+import { Form } from '../../components/form/form';
 import { useRouter } from 'next/router';
 
 const apiUrl = 'https://v3-vefthjousta.herokuapp.com/';
@@ -65,23 +66,38 @@ export default function EventOne(){
   }
 
   if (error) {
-    return (
-      <p> Villa.. {error} </p>
-   );
+    <Layout>
+      <Head>
+        <title>Viðburður Zen - NextJs</title>
+      </Head>
+      <h1>Viðburðir á næstunni</h1>
+
+      <p>Villa...</p>     
+      
+      <hr/>
+      <Form/>
+      <hr/>
+     
+    <Footer/>
+    </Layout>
   }
 
   if(loading){
-    return (
-      <p> sæki gögn .... loading... </p>
-    );
+    <Layout>
+      <Head>
+        <title>Viðburður Zen - NextJs</title>
+      </Head>
+      <h1>Viðburðir á næstunni</h1>
+
+      <p>sæki gögn....</p>     
+      
+      <hr/>
+      <Form/>
+      <hr/>
+     <Footer/>
+    </Layout>
   } 
  
-  /*if(notFound){
-    return (
-     <NotFound />
-    );
-  }*/
-  
   return (
     <Layout>
       <Head>
@@ -109,13 +125,11 @@ export default function EventOne(){
          ) }
 
       </ul>
-        
       <hr/>
-      <ul>
-        <li><Link href="/">Forsíða</Link></li>
-        <li><Link href="/innskra/innskra">Innskrá</Link></li>
-        <li><Link href="/nyskra/nyskra">Nýskrá</Link></li>
-      </ul>   
+      <Form/>
+      <hr/>
+    
+    <Footer/>
     </Layout>
   ); 
 }

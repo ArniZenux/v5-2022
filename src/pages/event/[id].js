@@ -105,8 +105,8 @@ export default function EventOne(){
       </Head>
       <h1>Viðburðir á næstunni</h1>
      
-      {itemss.map((item, index) => (
-        <h2>{ item.namevidburdur }</h2>
+      {itemss.map((item, i) => (
+        <h2 key={i}>{ item.namevidburdur }</h2>
       ))}
      
       <br/>
@@ -116,9 +116,9 @@ export default function EventOne(){
       
       { ( notendur && notendur.length > 0 && notendur.map((item,i ) => {
           return (  
-                <ul> 
-                  <li> { item.nameskra } </li>
-                  <li> { item.comment }</li>
+                <ul key={i}> 
+                  <li key={i}> { item.nameskra } </li>
+                  <li key={i}> { item.comment }</li>
                 </ul>
                 )
              })

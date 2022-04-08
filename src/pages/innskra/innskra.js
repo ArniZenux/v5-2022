@@ -7,7 +7,7 @@ import L1 from '../../components/login/Login.module.scss';
 
 const apiUrl = 'https://v3-vefthjousta.herokuapp.com/';
 
-function innskra(){
+function Innskra(){
   const [SkraInn, setSkraInn] = useState(false);
 
   useEffect(() => {
@@ -53,10 +53,10 @@ function innskra(){
       <main>
 
         <form className={L1.Login__form} method="post" onSubmit={onSubmitFall}>
-          <label className={L1.Login__label} for="username">Notandi:</label> 
+          <label className={L1.Login__label} htmlFor="username">Notandi:</label> 
           <input type="text" name="username " id="username"/>
            
-          <label className={L1.Login__label} for="password">Password:</label>
+          <label className={L1.Login__label} htmlFor="password">Password:</label>
           <input type="password" name="password" id="password"/>
           <p id='logged'> {SkraInn ? 'Skráður inn' : 'Ekki skráður' } </p> 
           <Button/>
@@ -70,4 +70,4 @@ function innskra(){
   ); 
 }
 
-export default innskra;
+export default Innskra;

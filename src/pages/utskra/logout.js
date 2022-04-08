@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Layout } from '../../components/layout/Layout';
 import { Footer } from '../../components/footer/footer';
 
-function logout(){
+function Logout(){
   const router = useRouter();
 
   useEffect(() => {
@@ -25,4 +25,4 @@ function logout(){
   );
 }
 
-export default logout;
+export default Logout;

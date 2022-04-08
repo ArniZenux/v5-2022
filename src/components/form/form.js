@@ -5,11 +5,11 @@ export function Form(){
   return (
     <div className="App">
       <main>
-       <form class="field" method="post" action="/admin/login" autocomplete="off">
-         <label className={ff.Form_layout__label} for="name">Nafn:</label> 
+       <form className="field" method="post" action="/admin/login" autoComplete="off">
+         <label className={ff.Form_layout__label} htmlFor="name">Nafn:</label> 
          <input className={ff.Form_layout__input} type="text" name="name "/>
          <br/>
-         <label className={ff.Form_layout__label} for="comment">Athugsemdir:</label>
+         <label className={ff.Form_layout__label} htmlFor="comment">Athugsemdir:</label>
          <input className={ff.Form_layout__input} type="text" id="comment" name="comment" />
         
          <Button />

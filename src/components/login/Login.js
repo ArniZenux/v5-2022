@@ -6,11 +6,11 @@ export function Login(){
   return (
       <main>
 
-        <form className={L1.Login__form} method="post" action="/admin/login" autocomplete="off">
-          <label className={L1.Login__label} for="username">Notandi:</label> 
+        <form className={L1.Login__form} method="post" action="/admin/login" autoComplete="off">
+          <label className={L1.Login__label} htmlFor="username">Notandi:</label> 
           <input type="text" name="username "/>
            
-          <label className={L1.Login__label} for="password">Password:</label>
+          <label className={L1.Login__label} htmlFor="password">Password:</label>
           <input type="password" id="password" name="password" />
            
           <Button/>

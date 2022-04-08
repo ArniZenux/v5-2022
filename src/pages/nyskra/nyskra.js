@@ -9,7 +9,7 @@ import L1 from '../../components/login/Login.module.scss';
 
 const apiUrl = 'https://v3-vefthjousta.herokuapp.com/';
 
-function nyskra(){
+function Nyskra(){
   const [Nyskra, setNySkra] = useState(false);
 
   useEffect(() => {
@@ -55,13 +55,13 @@ function nyskra(){
       <h1>Nýskrá</h1>
       <main>
         <form className={L1.Login__form} method="post" onSubmit={onSubmitFall}>
-          <label className={L1.Login__label} for="nafn">Nafn:</label> 
+          <label className={L1.Login__label} htmlFor="nafn">Nafn:</label> 
           <input type="text" id="nameuser" name="nameuser" />
           
-          <label className={L1.Login__label} for="username">Notandi:</label> 
+          <label className={L1.Login__label} htmlFor="username">Notandi:</label> 
           <input type="text"  id="username" name="username" />
 
-          <label className={L1.Login__label} for="password">Password:</label>
+          <label className={L1.Login__label} htmlFor="password">Password:</label>
           <input type="password" id="password" name="password" />
           <p id='logged'> {Nyskra ? 'Nýskráður!!' : 'Ekki nýskráður' } </p> 
           <Button/>
@@ -75,4 +75,4 @@ function nyskra(){
   ); 
 }
 
-export default nyskra;
+export default Nyskra;

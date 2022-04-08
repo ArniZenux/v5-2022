@@ -11,16 +11,24 @@ function Innskra(){
   const [SkraInn, setSkraInn] = useState(false);
 
   useEffect(() => {
-    if(!localStorage.getItem('erSkra')){
-      localStorage.setItem('erSkra', 'false');
+    function fetchData(){
+      
+      if(!localStorage.getItem('erSkra')){
+        localStorage.setItem('erSkra', 'false');
+      }
+      
+      const skraData = window.localStorage.getItem('erSkra');
+      
+      setSkraInn(skraData ? JSON.parse(skraData) : false); 
     }
-    const skraData = window.localStorage.getItem('erSkra');
-    setSkraInn(skraData ? JSON.parse(skraData) : false); 
-  });
 
+    fetchData();
+  
+  }, []);
+  
   const onSubmitFall = async( event ) =>{
     event.preventDefault(); 
-    console.log('event --> ', event.target); 
+    console.log('event: ', event.target); 
     const data = { 
       username: event.target.username.value,
       password: event.target.password.value,

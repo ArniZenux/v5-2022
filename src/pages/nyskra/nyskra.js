@@ -4,13 +4,16 @@ import { Layout } from '../../components/layout/Layout';
 import { Signup } from '../../components/signup/Signup';
 import { Footer } from '../../components/footer/footer';
 import { Button } from '../../components/button/button';
+import { useRouter } from 'next/router';
 
 import L1 from '../../components/login/Login.module.scss';
 
-const apiUrl = 'https://v3-vefthjousta.herokuapp.com/';
+//const apiUrl = 'https://v3-vefthjousta.herokuapp.com/';
+const apiUrl = 'https://vef2-20222-v3-synilausn.herokuapp.com/'; //  Invaldi token, jesus!
 
 function Nyskra(){
   const [Nyskra, setNySkra] = useState(false);
+  const router = useRouter(); 
 
   useEffect(() => {
     /*if(!localStorage.getItem('erNySkra')){
@@ -23,15 +26,15 @@ function Nyskra(){
 
   const onSubmitFall = async( event ) =>{
     event.preventDefault(); 
-    console.log('event --> ', event.target); 
+    console.log('event :', event.target); 
     const data = { 
-      nameuser: event.target.nameuser.value,
+      name: event.target.name.value,
       username: event.target.username.value,
       password: event.target.password.value,
     };
     console.log(data); 
     const dataJson = JSON.stringify(data);
-    const endpoint = apiUrl + 'notandi/register';
+    const endpoint = apiUrl + 'users/register';
     const options = {
       method: 'POST',
       headers: { 
@@ -39,14 +42,17 @@ function Nyskra(){
       },
       body: dataJson,
     };
+    
     const sending = await fetch(endpoint,options);
-    const notAdmin = document.querySelector('#logged');
+
     if(sending.ok){
       console.log('sending: ', sending);
       //window.localStorage.setItem("erSkra","true");
       setNySkra(true); 
+      router.push('/');
     }
   };
+
   return (
     <Layout>
       <Head>
@@ -56,7 +62,7 @@ function Nyskra(){
       <main>
         <form className={L1.Login__form} method="post" onSubmit={onSubmitFall}>
           <label className={L1.Login__label} htmlFor="nafn">Nafn:</label> 
-          <input type="text" id="nameuser" name="nameuser" />
+          <input type="text" id="name" name="name" />
           
           <label className={L1.Login__label} htmlFor="username">Notandi:</label> 
           <input type="text"  id="username" name="username" />

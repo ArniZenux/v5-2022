@@ -32,7 +32,7 @@ export default function Home() {
       }
       catch(e){
         console.warn('unable to fetch data', e); 
-        setError('Gat ekki sótt efni í vefþjónustu - Bilað í þjónustuna.');
+        //setError('Gat ekki sótt efni í vefþjónustu - Bilað í þjónustuna.');
         return; 
       }
       finally{
@@ -99,7 +99,7 @@ export default function Home() {
       <ul>
       { 
        data.map( (item, index) => (
-          <li key={index}><Link href={`/event/${item.id}`}><a> { item.namevidburdur } </a></Link></li> 
+          <li key={index}><Link href={`/event/${item.id}`}><a> {item.namevidburdur} </a></Link></li> 
        ))
       }
       </ul>

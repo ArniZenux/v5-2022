@@ -4,11 +4,14 @@ import { Layout } from '../../components/layout/Layout';
 import { Footer } from '../../components/footer/footer';
 import { Button } from '../../components/button/button';
 import L1 from '../../components/login/Login.module.scss';
+import { useRouter } from 'next/router';
 
-const apiUrl = 'https://v3-vefthjousta.herokuapp.com/';
+//const apiUrl = 'https://v3-vefthjousta.herokuapp.com/';
+const apiUrl = 'https://vef2-20222-v3-synilausn.herokuapp.com/'; //  Invaldi token, jesus!
 
 function Innskra(){
   const [SkraInn, setSkraInn] = useState(false);
+  const router = useRouter(); 
 
   useEffect(() => {
     function fetchData(){
@@ -35,7 +38,7 @@ function Innskra(){
     };
     console.log(data); 
     const dataJson = JSON.stringify(data);
-    const endpoint = apiUrl + 'admin/login';
+    const endpoint = apiUrl + 'users/login';
     const options = {
       method: 'POST',
       headers: { 
@@ -43,12 +46,14 @@ function Innskra(){
       },
       body: dataJson,
     };
+
     const sending = await fetch(endpoint,options);
-    const notAdmin = document.querySelector('#logged');
+
     if(sending.ok){
       console.log('sending: ', sending);
       window.localStorage.setItem("erSkra","true");
-      setSkraInn(true); 
+      setSkraInn(true);
+      router.push('/');
     }
   };
 
